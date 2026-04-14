@@ -12,7 +12,6 @@
 
     <div style="text-align: center; margin-top: 100px;">
         <h1>Selamat Datang di DOJO AL-HANIF</h1>
-        <p>Gunakan kode rahasia untuk masuk ke ruang admin.</p>
         <br>
         <a href="/daftar" style="color: red; font-weight: bold;">Halaman Pendaftaran Publik</a>
     </div>
