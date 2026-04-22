@@ -10,8 +10,8 @@
 
 <body>
     <div class="container">
-        <h2>Pusat Kendali DOJO AL-HANIF</h2>
-        <a href="/" class="link-back">&larr; Kembali ke Beranda</a>
+        <h2>Dashboard Anggota</h2>
+        <a href="/dashboard" class="link-back">&larr; Kembali ke Dashboard Utama</a>
 
         @if(session('success'))
             <div class="alert-success" style="font-weight: bold; margin-bottom: 20px;">✓ {{ session('success') }}</div>

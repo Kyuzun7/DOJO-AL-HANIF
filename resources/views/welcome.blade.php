@@ -156,29 +156,129 @@
     </section>
 
     <!-- KEGIATAN TERBARU SECTION -->
+    @if($latestArticles->count() > 0)
+    <section class="kegiatan-section" id="home-artikel-section" style="background-image: url('{{ $latestArticles[0]->cover_image ? Storage::url($latestArticles[0]->cover_image) : asset('img/kegiatan_bg2_1776780785146.png') }}'); transition: background-image 0.5s ease-in-out;">
+        <div class="kegiatan-overlay"></div>
+        <div class="kegiatan-content">
+            <div class="kegiatan-box">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span class="section-subtitle" style="margin-bottom: 0;">ARTIKEL TERBARU</span>
+                    <a href="/artikel" style="font-size: 0.7rem; padding: 3px 10px; color: #d12e2e; border: 1px solid #d12e2e; border-radius: 4px; text-decoration: none; font-weight: bold; transition: background 0.3s;" onmouseover="this.style.background='#d12e2e'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='#d12e2e';">LIHAT DAFTAR<br>ARTIKEL</a>
+                </div>
+                <h2 class="section-title" id="home-artikel-title" style="font-size: 1.6rem;">{{ strtoupper($latestArticles[0]->title) }}</h2>
+                <p id="home-artikel-excerpt">{{ \Illuminate\Support\Str::words(strip_tags($latestArticles[0]->content), 20, '...') }}</p>
+                <div style="margin-top: 15px;">
+                    <a href="/artikel/{{ $latestArticles[0]->slug }}" id="home-artikel-link" class="btn btn-red">BACA ARTIKEL</a>
+                </div>
+                
+                @if($latestArticles->count() > 1)
+                <!-- Slider Controls at bottom right -->
+                <div class="slider-controls">
+                    <button class="slider-btn" onclick="prevArtikel()"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn" onclick="nextArtikel()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                @endif
+            </div>
+        </div>
+    </section>
+
+    @if($latestArticles->count() > 1)
+    <script>
+        const artikelData = [
+            @foreach($latestArticles as $art)
+            {
+                title: @json(strtoupper($art->title)),
+                excerpt: @json(\Illuminate\Support\Str::words(strip_tags($art->content), 20, '...')),
+                slug: @json($art->slug),
+                cover: @json($art->cover_image ? Storage::url($art->cover_image) : asset('img/kegiatan_bg2_1776780785146.png'))
+            },
+            @endforeach
+        ];
+        
+        let currentArtikelIndex = 0;
+        
+        function updateArtikelDisplay() {
+            const art = artikelData[currentArtikelIndex];
+            document.getElementById('home-artikel-section').style.backgroundImage = `url('${art.cover}')`;
+            
+            // simple fade effect for text
+            const titleEl = document.getElementById('home-artikel-title');
+            const excerptEl = document.getElementById('home-artikel-excerpt');
+            
+            titleEl.style.opacity = 0;
+            excerptEl.style.opacity = 0;
+            
+            setTimeout(() => {
+                titleEl.innerText = art.title;
+                excerptEl.innerText = art.excerpt;
+                document.getElementById('home-artikel-link').href = `/artikel/${art.slug}`;
+                titleEl.style.opacity = 1;
+                excerptEl.style.opacity = 1;
+            }, 300);
+        }
+        
+        function nextArtikel() {
+            currentArtikelIndex = (currentArtikelIndex + 1) % artikelData.length;
+            updateArtikelDisplay();
+        }
+        
+        function prevArtikel() {
+            currentArtikelIndex = (currentArtikelIndex - 1 + artikelData.length) % artikelData.length;
+            updateArtikelDisplay();
+        }
+    </script>
+    @endif
+
+    @else
     <section class="kegiatan-section" style="background-image: url('{{ asset('img/kegiatan_bg2_1776780785146.png') }}');">
         <div class="kegiatan-overlay"></div>
         <div class="kegiatan-content">
             <div class="kegiatan-box">
                 <span class="section-subtitle">KEGIATAN TERBARU</span>
-                <h2 class="section-title" style="font-size: 1.6rem;">NATIONAL CHAMPIONSHIP 2024</h2>
-                <p>Persiapan intensif Dojo Al-Hanif dalam menghadapi turnamen nasional tahun ini. Lihat bagaimana para atlet kami melampaui batas kemampuan mereka dalam kamp pelatihan khusus.</p>
-                <a href="#" class="btn btn-red">LIHAT DETAIL ACARA</a>
-                
-                <!-- Slider Controls at bottom right -->
-                <div class="slider-controls">
-                    <button class="slider-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="slider-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
+                <h2 class="section-title" style="font-size: 1.6rem;">BELUM ADA ARTIKEL</h2>
+                <p>Nantikan pengumuman dan berita kegiatan terbaru dari Dojo Al-Hanif.</p>
             </div>
         </div>
     </section>
+    @endif
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-logo">DOJO AL-HANIF</div>
-            <p class="footer-text">&copy; {{ date('Y') }} Dojo Al-Hanif. All Rights Reserved.</p>
+    <footer class="large-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo-title">DOJO AL-HANIF</div>
+                <p>Pusat pelatihan karate modern yang mengedepankan nilai sportivitas dan keunggulan karakter di setiap gerakan.</p>
+            </div>
+            <div class="footer-col" style="padding-left: 20px;">
+                <h4>QUICK LINKS</h4>
+                <ul>
+                    <li><a href="/">BERANDA</a></li>
+                    <li><a href="#">ARTIKEL</a></li>
+                    <li><a href="#">KEGIATAN</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>CONTACT</h4>
+                <p>JL. GELA DIRI NO. 123<br>JAKARTA, INDONESIA<br>+62 21 098 7182<br>INFO@DOJOALHANIF.COM</p>
+            </div>
+            <div class="footer-col">
+                <h4>SOSMED</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fas fa-globe"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <button class="btn-newsletter">NEWSLETTER INFO</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2024 DOJO AL-HANIF. ALL RIGHTS RESERVED.</div>
+            <div class="footer-bottom-links">
+                <a href="#">GUIDELINES</a>
+                <a href="#">PRICING</a>
+                <a href="#">SOCIAL MEDIA</a>
+                <a href="#">CLEAR</a>
+            </div>
         </div>
     </footer>
 

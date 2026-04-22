@@ -21,6 +21,11 @@ class AuthController extends Controller
         return back()->with('error', 'Akses ditolak!');
     }
 
+    public function mainDashboard()
+    {
+        return view('admin.main_dashboard');
+    }
+
     public function dashboard()
     {
         $calon = CalonMember::orderBy('created_at', 'desc')->get();

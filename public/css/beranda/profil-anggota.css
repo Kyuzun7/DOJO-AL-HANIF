@@ -1,0 +1,254 @@
+/* Specific CSS for Profil Anggota Page */
+.profil-header-section {
+    background: linear-gradient(180deg, #fceded 0%, #ffffff 100%);
+    padding: 80px 20px 40px;
+    text-align: center;
+}
+.profil-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #3b1c20;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+.profil-container {
+    max-width: 900px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+.profil-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+}
+.profil-table th {
+    background-color: #d1d1d1;
+    color: #333;
+    font-weight: 700;
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+    text-transform: uppercase;
+}
+.profil-table td {
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px solid #d1d1d1;
+    background-color: #e0e0e0;
+}
+.profil-table td:first-child {
+    text-align: left;
+    padding-left: 30px;
+    font-weight: 600;
+}
+.belt-row td {
+    background-color: #b31b1b !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left !important;
+    padding: 10px 15px;
+    color: #ffffff !important;
+    border: 1px solid #b31b1b !important;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 18px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 80px;
+}
+.status-aktif {
+    background-color: #28a745;
+    color: white;
+    border: 1px solid #1e7e34;
+}
+.status-nonaktif {
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #bd2130;
+}
+
+/* Large Footer Layout as in image */
+.large-footer {
+    background-color: #f3f3f3;
+    padding: 50px 40px 20px;
+    border-top: 1px solid #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    color: #555;
+}
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+    gap: 20px;
+}
+.footer-logo-title {
+    color: #b31b1b;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+.footer-col h4 {
+    color: #b31b1b;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.footer-col p {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+    color: #555;
+    max-width: 90%;
+}
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-col ul li {
+    margin-bottom: 6px;
+}
+.footer-col ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.social-icons a {
+    display: inline-block;
+    margin-right: 12px;
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+.btn-newsletter {
+    display: block;
+    background-color: #b31b1b;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #888;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+.footer-bottom-links a {
+    color: #888;
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* RESPONSIVE MOBILE CSS */
+@media (max-width: 768px) {
+    .profil-title {
+        font-size: 2.2rem;
+    }
+    .profil-header-section {
+        padding: 60px 15px 30px;
+    }
+    
+    /* Make table responsive (stacked blocks) */
+    .profil-table thead {
+        display: none;
+    }
+    .profil-table, .profil-table tbody, .profil-table tr, .profil-table td {
+        display: block;
+        width: 100%;
+    }
+    .profil-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #d1d1d1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .belt-row {
+        margin-bottom: 10px;
+        border: none;
+    }
+    .belt-row td {
+        text-align: center !important;
+        padding: 12px 15px !important;
+        border: none !important;
+        border-bottom: 2px solid white !important;
+    }
+    .belt-row td::before {
+        display: none !important;
+    }
+    
+    .profil-table td {
+        text-align: right;
+        padding-left: 40%;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .profil-table td:last-child {
+        border-bottom: none;
+    }
+    .profil-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 35%;
+        text-align: left;
+        font-weight: 800;
+        color: #555;
+        font-size: 11px;
+    }
+    
+    /* Responsive large footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .footer-col {
+        padding-left: 0 !important;
+        text-align: center;
+    }
+    .footer-col p {
+        max-width: 100%;
+        margin: 0 auto 10px auto;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .footer-bottom-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .footer-bottom-links a {
+        margin-left: 0;
+    }
+    .btn-newsletter {
+        margin: 10px auto 0 auto;
+    }
+}
