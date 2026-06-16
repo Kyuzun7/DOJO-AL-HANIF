@@ -68,7 +68,7 @@
                     @endif
                 @endif
 
-                <button type="submit" class="btn bg-blue" style="width: 100%; padding: 12px; margin-top: 10px;">Update Admin</button>
+                <button type="submit" class="btn bg-blue" style="width: 100%; padding: 12px; margin-top: 10px;">Perbarui Admin</button>
             </form>
         </div>
     </div>

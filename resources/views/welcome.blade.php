@@ -41,8 +41,8 @@
                         <button type="submit" class="btn btn-outline-red">KELUAR AKUN</button>
                     </form>
                 @else
-                    <a href="/daftar" class="btn btn-white">JOIN NOW</a>
-                    <a href="#sejarah" class="btn btn-outline-red">PELAJARI LEBIH</a>
+                    <a href="/daftar" class="btn btn-white">DAFTAR SEKARANG</a>
+                    <a href="#sejarah" class="btn btn-outline-red">TENTANG KAMI</a>
                 @endauth
             </div>
             
@@ -58,7 +58,7 @@
     <section id="sejarah" class="section-padding">
         <div class="container sejarah-grid">
             <div class="sejarah-text">
-                <span class="section-subtitle">THE LEGACY</span>
+                <span class="section-subtitle">WARISAN SEJARAH</span>
                 <h2 class="section-title" style="margin-bottom: 20px;">SEJARAH</h2>
                 <p>
                     Dojo Al-Hanif didirikan pada tahun 2015 sebagai wujud komitmen dalam membina generasi muda melalui seni bela diri karate. Pada awal perjalanannya, Dojo Al-Hanif mengadopsi aliran KASIDO sebagai dasar pembinaan teknik dan karakter para karateka. Selama beberapa tahun, dojo ini tumbuh dan berkembang dengan penuh semangat, menanamkan nilai disiplin, keberanian, serta sportivitas kepada para anggotanya.
@@ -179,7 +179,7 @@
     <section class="section-padding benefit-wrapper">
         <div class="container">
             <div class="benefit-section" style="margin-top: 0;">
-                <h2 class="section-title">BENEFIT</h2>
+                <h2 class="section-title">MANFAAT</h2>
                 <div class="benefit-grid" style="margin-top: 30px;">
                     <div class="benefit-card">
                         <div class="benefit-icon"><i class="fas fa-star"></i></div>
@@ -257,7 +257,7 @@
     <!-- SLIDER AGENDA KEGIATAN -->
     <section class="agenda-slider-section">
         <div class="container">
-            <span class="section-subtitle" style="text-align: center; display: block;">UPCOMING EVENTS</span>
+            <span class="section-subtitle" style="text-align: center; display: block;">KEGIATAN MENDATANG</span>
             <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">AGENDA KEGIATAN</h2>
             
             <div class="agenda-slider-container" id="agendaSliderContainer">
@@ -280,7 +280,7 @@
                         <div class="agenda-card" style="flex: 0 0 100%;">
                             <div class="agenda-card-placeholder coming-soon-card">
                                 <i class="fas fa-hourglass-half"></i>
-                                <h3 style="margin: 0; font-family: 'Montserrat', sans-serif;">COMING SOON</h3>
+                                <h3 style="margin: 0; font-family: 'Montserrat', sans-serif;">SEGERA HADIR</h3>
                                 <p style="margin-top: 10px; color: #aaa;">Nantikan agenda kegiatan seru lainnya dari Dojo Al-Hanif!</p>
                             </div>
                         </div>

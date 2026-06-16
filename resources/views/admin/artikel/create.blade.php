@@ -26,7 +26,7 @@
                         <input type="date" name="published_date" class="form-input" required value="{{ old('published_date', date('Y-m-d')) }}">
                     </div>
                     <div style="flex: 1;">
-                        <label class="form-label">Cover Image Utama (Opsional)</label>
+                        <label class="form-label">Gambar Sampul Utama (Opsional)</label>
                         <input type="file" name="cover_image" class="form-input" accept="image/*">
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <textarea name="content" id="editor">{{ old('content') }}</textarea>
                 </div>
 
-                <button type="submit" class="btn bg-green" style="width:100%; padding:15px; font-size:16px;">Publish Artikel</button>
+                <button type="submit" class="btn bg-green" style="width:100%; padding:15px; font-size:16px;">Publikasikan Artikel</button>
             </form>
         </div>
     </div>

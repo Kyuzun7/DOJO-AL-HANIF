@@ -51,6 +51,7 @@ Route::middleware(['auth', 'restrict.tier2'])->group(function () {
     Route::put('/admin/profile/{id}', [\App\Http\Controllers\AdminProfileController::class, 'update']);
     Route::delete('/admin/profile/{id}', [\App\Http\Controllers\AdminProfileController::class, 'destroy']);
     Route::get('/admin/anggota', [AuthController::class, 'dashboard']);
+    Route::get('/admin/anggota/export', [AuthController::class, 'exportMembers']);
     
     // Calon
     Route::post('/admin/calon/{id}/terima', [AuthController::class, 'terimaMember']);

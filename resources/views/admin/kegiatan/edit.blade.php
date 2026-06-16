@@ -41,7 +41,7 @@
                         <input type="text" name="location" class="form-input" value="{{ old('location', $kegiatan->location) }}">
                     </div>
                     <div style="flex: 1; min-width: 250px;">
-                        <label class="form-label">Cover / Flyer (Upload baru untuk mengganti)</label>
+                        <label class="form-label">Gambar Sampul / Brosur (Unggah baru untuk mengganti)</label>
                         <input type="file" name="flyer_image" class="form-input" accept="image/*">
                         @if($kegiatan->flyer_image)
                             <div style="margin-top: 10px;">

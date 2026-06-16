@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - DOJO AL-HANIF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 </head>
 
@@ -25,6 +26,10 @@
                     ({{ $aktif->count() }})</button>
                 <button class="tab-btn" onclick="openTab(event, 'TidakAktif')">3. Anggota Tidak Aktif
                     ({{ $tidak_aktif->count() }})</button>
+                <button class="btn bg-green" onclick="openModal('modalExportExcel')"
+                    style="padding: 10px 15px; font-size: 14px; font-weight: bold; border-radius: 5px; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; color: white;">
+                    <i class="fas fa-file-excel"></i> Ekspor Excel Pendaftaran
+                </button>
             </div>
 
             <div>
@@ -121,8 +126,10 @@
                             </td>
 
                             <td style="font-size: 13px; line-height: 1.5; color: #444;">
-                                Ayah: {{ $a->nama_ayah }} (<a href="https://wa.me/{{ $a->no_hp_ayah }}" target="_blank" style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)<br>
-                                Ibu: {{ $a->nama_ibu }} (<a href="https://wa.me/{{ $a->no_hp_ibu }}" target="_blank" style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)
+                                Ayah: {{ $a->nama_ayah }} (<a href="https://wa.me/{{ $a->no_hp_ayah }}" target="_blank"
+                                    style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)<br>
+                                Ibu: {{ $a->nama_ibu }} (<a href="https://wa.me/{{ $a->no_hp_ibu }}" target="_blank"
+                                    style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)
                             </td>
 
                             <td style="font-size: 13px; color: #444;">{{ $a->tanggal_diterima->format('d M Y') }}</td>
@@ -177,8 +184,10 @@
                             </td>
 
                             <td style="font-size: 13px; line-height: 1.5; color: #000000ff;">
-                                Ayah: {{ $t->nama_ayah }} (<a href="https://wa.me/{{ $t->no_hp_ayah }}" target="_blank" style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)<br>
-                                Ibu: {{ $t->nama_ibu }} (<a href="https://wa.me/{{ $t->no_hp_ibu }}" target="_blank" style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)
+                                Ayah: {{ $t->nama_ayah }} (<a href="https://wa.me/{{ $t->no_hp_ayah }}" target="_blank"
+                                    style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)<br>
+                                Ibu: {{ $t->nama_ibu }} (<a href="https://wa.me/{{ $t->no_hp_ibu }}" target="_blank"
+                                    style="color:#25d366; text-decoration:none; font-weight:bold;">WA</a>)
                             </td>
 
                             <td style="color: #c0392b; font-weight: bold; font-size: 13px;">
@@ -220,10 +229,14 @@
                 <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
                     <div style="flex: 0 0 120px;">
                         <label class="form-label">Foto Profil</label>
-                        <div style="width: 120px; height: 160px; background: #f0f0f0; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                        <div
+                            style="width: 120px; height: 160px; background: #f0f0f0; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
                             <i class="fas fa-camera" style="font-size: 2rem; color: #ccc;"></i>
-                            <input type="file" name="foto" class="form-input" accept="image/*" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;" onchange="previewImage(this, 'previewTambah')">
-                            <img id="previewTambah" style="display: none; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                            <input type="file" name="foto" class="form-input" accept="image/*"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;"
+                                onchange="previewImage(this, 'previewTambah')">
+                            <img id="previewTambah"
+                                style="display: none; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
                         </div>
                         <small style="font-size: 10px; color: #999;">Maks 2MB (3:4 disarankan)</small>
                     </div>
@@ -335,14 +348,19 @@
                     <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
                         <div style="flex: 0 0 120px;">
                             <label class="form-label">Foto Profil</label>
-                            <div style="width: 120px; height: 160px; background: #f0f0f0; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                            <div
+                                style="width: 120px; height: 160px; background: #f0f0f0; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
                                 @if($member->foto)
-                                    <img src="{{ Storage::url($member->foto) }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="{{ Storage::url($member->foto) }}"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
                                 @else
                                     <i class="fas fa-camera" style="font-size: 2rem; color: #ccc;"></i>
                                 @endif
-                                <input type="file" name="foto" class="form-input" accept="image/*" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;" onchange="previewImage(this, 'previewEdit{{ $member->id }}')">
-                                <img id="previewEdit{{ $member->id }}" style="display: none; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                                <input type="file" name="foto" class="form-input" accept="image/*"
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;"
+                                    onchange="previewImage(this, 'previewEdit{{ $member->id }}')">
+                                <img id="previewEdit{{ $member->id }}"
+                                    style="display: none; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
                             </div>
                             <small style="font-size: 10px; color: #999;">Klik untuk ganti (Maks 2MB)</small>
                         </div>
@@ -393,7 +411,8 @@
                     <div style="display: flex; gap: 15px;">
                         <div style="flex: 1;">
                             <label class="form-label">Nama Ayah</label>
-                            <input type="text" name="nama_ayah" class="form-input" value="{{ $member->nama_ayah }}" required>
+                            <input type="text" name="nama_ayah" class="form-input" value="{{ $member->nama_ayah }}"
+                                required>
                             <label class="form-label">No HP Ayah</label>
                             <input type="text" name="no_hp_ayah" class="form-input" value="{{ $member->no_hp_ayah }}">
                         </div>
@@ -425,6 +444,61 @@
             </div>
         </div>
     @endforeach
+
+    <!-- Modal Export Excel -->
+    <div id="modalExportExcel" class="modal">
+        <div class="modal-box" style="max-width: 400px;">
+            <h3
+                style="margin-top:0; border-bottom: 2px solid #eee; padding-bottom:15px; color: #2980b9; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-file-excel" style="color: #27ae60;"></i> Ekspor Laporan Pendaftaran
+            </h3>
+            <button type="button" class="btn bg-red" style="float: right; margin-top:-50px; padding: 6px 10px;"
+                onclick="closeModal('modalExportExcel')">Tutup X</button>
+
+            <form action="/admin/anggota/export" method="GET" target="_blank" onsubmit="closeModal('modalExportExcel')">
+                <label class="form-label">Pilih Bulan Laporan</label>
+                <select name="bulan" class="form-input" style="cursor:pointer;" required>
+                    @php
+                        $months = [
+                            '01' => 'Januari',
+                            '02' => 'Februari',
+                            '03' => 'Maret',
+                            '04' => 'April',
+                            '05' => 'Mei',
+                            '06' => 'Juni',
+                            '07' => 'Juli',
+                            '08' => 'Agustus',
+                            '09' => 'September',
+                            '10' => 'Oktober',
+                            '11' => 'November',
+                            '12' => 'Desember'
+                        ];
+                        $currentMonth = date('m');
+                    @endphp
+                    @foreach($months as $num => $name)
+                        <option value="{{ $num }}" {{ $currentMonth == $num ? 'selected' : '' }}>{{ $name }}</option>
+                    @endforeach
+                </select>
+
+                <label class="form-label">Pilih Tahun Laporan</label>
+                <select name="tahun" class="form-input" style="cursor:pointer;" required>
+                    @php
+                        $currentYear = date('Y');
+                        $startYear = 2020;
+                        $endYear = $currentYear + 5;
+                    @endphp
+                    @for($yr = $startYear; $yr <= $endYear; $yr++)
+                        <option value="{{ $yr }}" {{ $currentYear == $yr ? 'selected' : '' }}>{{ $yr }}</option>
+                    @endfor
+                </select>
+
+                <button type="submit" class="btn bg-blue"
+                    style="width:100%; padding:12px; margin-top:25px; font-size:15px; border-radius:5px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fas fa-download"></i> Unduh Laporan Excel
+                </button>
+            </form>
+        </div>
+    </div>
 
     <script src="{{ asset('js/admin/dashboard.js') }}"></script>
 </body>

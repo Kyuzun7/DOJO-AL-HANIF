@@ -40,7 +40,7 @@
                         <input type="text" name="location" class="form-input" value="{{ old('location') }}" placeholder="Contoh: GOR Ragunan, Jakarta">
                     </div>
                     <div style="flex: 1; min-width: 250px;">
-                        <label class="form-label">Cover / Flyer (Opsional)</label>
+                        <label class="form-label">Gambar Sampul / Brosur (Opsional)</label>
                         <input type="file" name="flyer_image" class="form-input" accept="image/*">
                     </div>
                 </div>

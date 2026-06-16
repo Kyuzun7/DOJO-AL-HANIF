@@ -18,7 +18,7 @@
         </div>
 
         @if(session('success')) <div class="alert-success">{{ session('success') }}</div> @endif
-        @if($errors->any()) <div class="alert-success" style="background:#f8d7da; color:#721c24;">Gagal upload! Pastikan file berupa gambar (jpg/png) max 2MB.</div> @endif
+        @if($errors->any()) <div class="alert-success" style="background:#f8d7da; color:#721c24;">Gagal mengunggah! Pastikan file berupa gambar (jpg/png) maks 2MB.</div> @endif
 
         <div class="form-card">
             <h3 style="margin-top:0; color:#27ae60;">+ Tambah Medali / Sertifikat Baru</h3>
@@ -27,7 +27,7 @@
                 <label style="font-weight:bold;">Nama Kejuaraan / Pencapaian</label>
                 <input type="text" name="nama_prestasi" class="form-input" placeholder="Cth: Juara 1 Kumite O2SN 2024" required>
                 
-                <label style="font-weight:bold;">Upload Foto Bukti (Maks 2MB)</label>
+                <label style="font-weight:bold;">Unggah Foto Bukti (Maks 2MB)</label>
                 <input type="file" name="foto_prestasi" class="form-input" accept="image/*">
                 
                 <button type="submit" class="btn-submit">Simpan Prestasi</button>

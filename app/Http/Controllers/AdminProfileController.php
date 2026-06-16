@@ -116,7 +116,7 @@ class AdminProfileController extends Controller
 
         $admin->save();
 
-        return redirect('/admin/profile')->with('success', 'Profil admin berhasil diupdate.');
+        return redirect('/admin/profile')->with('success', 'Profil admin berhasil diperbarui.');
     }
 
     public function destroy($id)

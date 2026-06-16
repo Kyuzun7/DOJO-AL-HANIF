@@ -38,7 +38,7 @@
                 <tr>
                     <th>Nama Lengkap</th>
                     <th>Username</th>
-                    <th>Role (Tier)</th>
+                    <th>Peran (Tier)</th>
                     <th>Aksi</th>
                 </tr>
                 @foreach($admins as $admin)

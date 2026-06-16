@@ -12,7 +12,7 @@
         <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
             <a href="/admin/absensi" class="link-back" style="margin-right: 15px; margin-bottom: 0;">&larr; Kembali ke Daftar Absensi</a>
             <a href="/admin/absensi/export?bulan={{ $bulan }}&tahun={{ $tahun }}" class="btn bg-green" style="background: #27ae60; text-decoration: none; padding: 8px 15px; border-radius: 5px; color: white; font-weight: bold; width: auto;">
-                <i class="fas fa-file-excel"></i> Export to Excel (CSV)
+                <i class="fas fa-file-excel"></i> Ekspor ke Excel (CSV)
             </a>
         </div>
 
@@ -20,11 +20,25 @@
             <form action="/admin/absensi/rekap" method="GET" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
                 <label>Bulan:</label>
                 <select name="bulan" class="form-input" style="width: auto;">
-                    @for($i=1; $i<=12; $i++)
-                        <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" {{ $bulan == str_pad($i, 2, '0', STR_PAD_LEFT) ? 'selected' : '' }}>
-                            {{ date('F', mktime(0, 0, 0, $i, 10)) }}
-                        </option>
-                    @endfor
+                    @php
+                        $months = [
+                            '01' => 'Januari',
+                            '02' => 'Februari',
+                            '03' => 'Maret',
+                            '04' => 'April',
+                            '05' => 'Mei',
+                            '06' => 'Juni',
+                            '07' => 'Juli',
+                            '08' => 'Agustus',
+                            '09' => 'September',
+                            '10' => 'Oktober',
+                            '11' => 'November',
+                            '12' => 'Desember'
+                        ];
+                    @endphp
+                    @foreach($months as $num => $name)
+                        <option value="{{ $num }}" {{ $bulan == $num ? 'selected' : '' }}>{{ $name }}</option>
+                    @endforeach
                 </select>
                 <label>Tahun:</label>
                 <select name="tahun" class="form-input" style="width: auto;">

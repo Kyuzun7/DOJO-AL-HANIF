@@ -109,8 +109,8 @@
                 </div>
 
                 <div class="modal-slider-controls" id="modalSliderControls" style="display:flex; justify-content:space-between; margin-top: 20px;">
-                    <button class="btn btn-red btn-sm" onclick="prevBio()" style="padding: 5px 15px;">&laquo; Prev</button>
-                    <button class="btn btn-red btn-sm" onclick="nextBio()" style="padding: 5px 15px;">Next &raquo;</button>
+                    <button class="btn btn-red btn-sm" onclick="prevBio()" style="padding: 5px 15px;">&laquo; Sebelumnya</button>
+                    <button class="btn btn-red btn-sm" onclick="nextBio()" style="padding: 5px 15px;">Selanjutnya &raquo;</button>
                 </div>
             </div>
         </div>

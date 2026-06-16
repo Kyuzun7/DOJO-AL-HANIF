@@ -27,7 +27,7 @@
                         <input type="date" name="published_date" class="form-input" required value="{{ old('published_date', $artikel->published_date) }}">
                     </div>
                     <div style="flex: 1;">
-                        <label class="form-label">Cover Image (Upload baru untuk mengganti)</label>
+                        <label class="form-label">Gambar Sampul (Unggah baru untuk mengganti)</label>
                         <input type="file" name="cover_image" class="form-input" accept="image/*">
                         @if($artikel->cover_image)
                             <div style="margin-top: 10px;">

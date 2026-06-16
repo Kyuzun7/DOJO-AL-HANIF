@@ -196,6 +196,93 @@ class AuthController extends Controller
         return back()->with('success', 'Prestasi dihapus!');
     }
 
+    public function exportMembers(Request $request)
+    {
+        $bulan = $request->get('bulan', date('m'));
+        $tahun = $request->get('tahun', date('Y'));
+
+        $namaBulan = [
+            '01' => 'Januari', '02' => 'Februari', '03' => 'Maret', '04' => 'April',
+            '05' => 'Mei', '06' => 'Juni', '07' => 'Juli', '08' => 'Agustus',
+            '09' => 'September', '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
+        ];
+
+        $bulanNama = $namaBulan[str_pad($bulan, 2, '0', STR_PAD_LEFT)] ?? 'Semua';
+
+        $members = Member::whereMonth('tanggal_diterima', $bulan)
+                         ->whereYear('tanggal_diterima', $tahun)
+                         ->orderBy('tanggal_diterima', 'asc')
+                         ->get();
+
+        $filename = "laporan_pendaftaran_anggota_{$bulan}_{$tahun}.csv";
+
+        $callback = function() use ($members, $bulanNama, $tahun) {
+            $handle = fopen('php://output', 'w');
+            
+            // Add UTF-8 BOM for Microsoft Excel compliance
+            fprintf($handle, chr(0xEF).chr(0xBB).chr(0xBF));
+
+            // Write report headers
+            fputcsv($handle, ['LAPORAN PENDAFTARAN ANGGOTA DOJO AL-HANIF']);
+            fputcsv($handle, ["Periode: {$bulanNama} {$tahun}"]);
+            fputcsv($handle, ["Total Pendaftar Baru: " . $members->count() . " Anggota"]);
+            fputcsv($handle, []); // Empty row
+
+            // Write table headers
+            fputcsv($handle, [
+                'No', 
+                'No. Anggota', 
+                'Nama Anggota', 
+                'Tempat Lahir', 
+                'Tanggal Lahir', 
+                'Umur (Tahun)', 
+                'Sabuk', 
+                'Berat Badan (kg)', 
+                'Tinggi Badan (cm)', 
+                'Ukuran Baju', 
+                'Nama Ayah', 
+                'No. HP Ayah', 
+                'Nama Ibu', 
+                'No. HP Ibu', 
+                'Alamat', 
+                'Tanggal Diterima', 
+                'Status'
+            ]);
+
+            $no = 1;
+            foreach ($members as $member) {
+                fputcsv($handle, [
+                    $no++,
+                    $member->nomor_anggota ?? '-',
+                    $member->nama,
+                    $member->tempat_lahir,
+                    $member->tanggal_lahir ? $member->tanggal_lahir->format('d-m-Y') : '-',
+                    $member->tanggal_lahir ? $member->tanggal_lahir->age : '-',
+                    $member->sabuk,
+                    $member->berat_badan,
+                    $member->tinggi_badan,
+                    $member->ukuran_baju,
+                    $member->nama_ayah,
+                    $member->no_hp_ayah,
+                    $member->nama_ibu,
+                    $member->no_hp_ibu,
+                    $member->alamat,
+                    $member->tanggal_diterima ? $member->tanggal_diterima->format('d-m-Y') : '-',
+                    strtoupper($member->status),
+                ]);
+            }
+
+            fclose($handle);
+        };
+
+        $headers = [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+        ];
+
+        return response()->stream($callback, 200, $headers);
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

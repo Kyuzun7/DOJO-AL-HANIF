@@ -11,7 +11,7 @@
         <h2>Absensi Anggota</h2>
         <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
             <a href="/dashboard" class="link-back" style="margin-right: 15px; margin-bottom: 0;">&larr; Kembali ke Dashboard</a>
-            <a href="/admin/absensi/rekap" class="btn bg-blue" style="text-decoration: none; padding: 8px 15px; border-radius: 5px; width: auto;">Lihat Rekapitulasi & Export Excel</a>
+            <a href="/admin/absensi/rekap" class="btn bg-blue" style="text-decoration: none; padding: 8px 15px; border-radius: 5px; width: auto;">Lihat Rekapitulasi & Ekspor Excel</a>
         </div>
 
         @if(session('success'))
